@@ -1,0 +1,23 @@
+<!-- Highlights -->
+<section id="{{ include.section.section_id }}" class="highlights">
+    {% assign arr = include.site.pages | where_exp: 'item', 'item.home.highlights.enabled == true' | sort: 'home.highlights.weight' %}
+    {% for section_page in arr %}
+        <section>
+            {% if section_page.home.highlights.home_img %}
+                <a class="image" href="{{ section_page.url | relative_url }}">
+                    <img src="{{ section_page.home.highlights.home_img.path | relative_url }}" data-position="{{ section_page.home.highlights.home_img.data_position }}" alt="" />
+                </a>
+            {% endif %}
+            <div class="content">
+                <header class="major">
+                    <h2>{{ section_page.title }}</h2>
+                    {{ section_page.subtitle | markdownify }}
+                </header>
+                {{ section_page.home.highlights.excerpt | markdownify }}
+                <ul class="actions">
+                    <li><a href="{{ section_page.url | relative_url }}" class="button">Learn More</a></li>
+                </ul>
+            </div>
+        </section>
+    {% endfor %}
+</section>

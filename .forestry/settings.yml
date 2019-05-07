@@ -1,0 +1,39 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: admin
+webhook_url: null
+sections:
+  - type: document
+    label: Config
+    path: _config.yml
+    templates:
+      - config
+  - type: document
+    label: Footer Configuration
+    path: _data/footer.yml
+    templates:
+      - footer
+  - type: document
+    label: Home
+    path: index.md
+    templates:
+      - home
+  - type: directory
+    path: ''
+    match: '**/*.md'
+    exclude: '{README.md,LICENSE.md,index.md,elements.md}'
+    label: Pages
+    create: all
+    templates:
+      - page
+  - type: document
+    label: Elements
+    path: elements.md
+    templates:
+      - elements
+upload_dir: images
+public_path: /images
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ':filename:'

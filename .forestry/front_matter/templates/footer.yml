@@ -1,0 +1,30 @@
+---
+label: Footer Configuration
+hide_body: true
+is_partial: false
+fields:
+  - type: field_group_list
+    name: social_icons
+    label: Social Media Icons
+    description: A list of social media icons displayed in the site footer
+    config:
+      labelField: title
+    fields:
+      - type: text
+        name: title
+        label: Icon Title
+        config:
+          required: true
+      - type: text
+        name: url
+        label: URL
+      - type: text
+        name: icon
+        label: Icon
+        description: Font Awesome icon
+        config:
+          required: true
+  - type: text
+    name: copyright
+    label: Copyright Text
+    description: The copyright text displayed at the bottom of the page footer

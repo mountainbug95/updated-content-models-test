@@ -1,0 +1,15 @@
+<!-- Footer -->
+<footer id="footer">
+    {% if site.data.footer.social_icons %}
+        <ul class="icons special">
+            {% for item in site.data.footer.social_icons %}
+                <li><a class="icon {{ item.icon }}" href="{{ item.url }}"><span class="label">{{ item.title }}</span></a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if site.data.footer.copyright %}
+        <p class="copyright">
+            {{ site.data.footer.copyright }}
+        </p>
+    {% endif %}
+</footer>

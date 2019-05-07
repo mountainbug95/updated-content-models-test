@@ -1,0 +1,19 @@
+---
+layout: body
+---
+
+    {% include banner.html %}
+    
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            {% for section in page.sections %}
+                
+                {% include {{ section.component }} section=section site=site page=page %}
+            {% endfor %}
+        </div>
+    </section>
+    
+    {% if page.cta.enabled %}
+        {% include cta.html %}
+    {% endif %}

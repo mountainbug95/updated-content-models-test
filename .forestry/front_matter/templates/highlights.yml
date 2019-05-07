@@ -1,0 +1,44 @@
+---
+label: Highlights Section
+hide_body: true
+is_partial: true
+display_field: title
+fields:
+  - type: text
+    name: type
+    label: Type
+    description: The type identifier of this object inside block lists
+    hidden: true
+    default: highlights
+    config:
+      required: true
+  - type: text
+    name: title
+    label: Section Title
+    description: >-
+      The text displayed at the top of the section (Also used by the CMS, even
+      if no title is displayed in the section)
+    default: Highlights Section
+    config:
+      required: true
+  - type: text
+    name: section_id
+    label: Section ID
+    default: two
+    config:
+      required: true
+  - type: text
+    name: component
+    label: Section Component
+    hidden: true
+    config:
+      required: true
+    default: icons.html
+  - type: text
+    name: type
+    label: Reference Type Name
+    description: Name of the object model if it was referenced
+    hidden: true
+    default: highlights
+    config:
+      required: true

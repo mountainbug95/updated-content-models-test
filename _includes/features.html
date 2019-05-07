@@ -1,0 +1,25 @@
+<!-- Features -->
+<section id="{{ include.section.section_id }}" class="special">
+    <header class="major">
+        <h2>{{ include.section.title }}</h2>
+        {{ include.section.subtitle | markdownify }}
+    </header>
+    <section class="features">
+        {% for feature in include.section.features %}
+            <section>
+                <span class="icon major {{ feature.icon }}"></span>
+                <h3>{{ feature.title }}</h3>
+                {{ feature.text | markdownify }}
+            </section>
+        {% endfor %}
+    </section>
+    {% if include.section.actions %}
+        <footer class="major">
+            <ul class="actions special">
+                {% for action in include.section.actions %}
+                    <li><a href="{% assign expr_1 = action.url | starts_with: '#' %}{% if expr_1 %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{% if action.is_primary %} primary{% endif %}{% if action.is_scrolly %} scrolly{% endif %}">{{ action.label }}</a></li>
+                {% endfor %}
+            </ul>
+        </footer>
+    {% endif %}
+</section>

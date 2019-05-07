@@ -1,0 +1,16 @@
+<!-- CTA -->
+<section id="cta" class="wrapper {{ page.cta.background_style }} special">
+    <div class="inner">
+        <header class="major">
+            <h2>{{ page.cta.title }}</h2>
+            {{ page.cta.text | markdownify }}
+        </header>
+        {% if page.cta.actions %}
+            <ul class="actions special">
+                {% for action in page.cta.actions %}
+                    <li><a href="{% assign expr_1 = action.url | starts_with: '#' %}{% if expr_1 %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{% if action.is_primary %} primary{% endif %}{% if action.is_scrolly %} scrolly{% endif %}">{{ action.label }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</section>
