@@ -1,11 +1,18 @@
 <!-- Header -->
 <header id="header">
-    <a href="{{ '/' | relative_url }}" class="title">{{ site.title }}</a>
-    <nav>
-        <ul>
-            {% for item in site.menus.main %}
-                <li><a href="{{ item.url | relative_url }}" {{ classNames({"active": item.url == page.url}) }}>{{ item.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="{{ '/' | relative_url }}" class="logo">
+            <span class="symbol"><img src="{{ site.data.header.logo_img_src | relative_url }}" alt="" /></span><span class="title">{{ site.title }}</span>
+        </a>
+        
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
 </header>

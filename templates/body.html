@@ -2,14 +2,17 @@
 
 {% block body %}
 
-    {% if page.template == "home" %}
-        {% include "sidebar.html" %}
-    {% else %}
+    <!-- Wrapper -->
+    <div id="wrapper">
         {% include "header.html" %}
-    {% endif %}
-
-    {% block content %}{% endblock %}
-
-    {% include "footer.html" %}
+        {% include "menu.html" %}
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        {% include "footer.html" %}
+    </div>
 
 {% endblock %}

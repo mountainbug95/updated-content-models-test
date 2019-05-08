@@ -2,20 +2,10 @@
 
 {% block content %}
 
-    <!-- Wrapper -->
-    <div id="wrapper">
-        
-        <!-- Main -->
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <h1 class="major">{{ page.title }}</h1>
-                {% if page.content_img_path %}
-                    <span class="image fit"><img src="{{ page.content_img_path | relative_url }}" alt="" /></span>
-                {% endif %}
-                {{ page.content }}
-            </div>
-        </section>
-        
-    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.img_src %}
+        <span class="image main"><img src="{{ page.img_src | relative_url }}" alt="" /></span>
+    {% endif %}
+    {{ page.content }}
 
 {% endblock %}

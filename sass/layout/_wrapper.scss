@@ -1,29 +1,25 @@
 ///
-/// Hyperspace by Pixelarity
+/// Phantom by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
-/* Wrapper (main) */
+/* Wrapper */
 
 	#wrapper {
-		#sidebar + & {
-			margin-left: _size(sidebar-width);
+		> * {
+			> .inner {
+				$gutter: _size(gutter);
 
-			@include breakpoint('<=large') {
-				margin-left: 0;
-				padding-top: _size(sidebar-height);
-			}
+				width: 100%;
+				max-width: _size(inner);
+				margin: 0 auto;
+				padding: 0 $gutter;
 
-			@include breakpoint('<=small') {
-				padding-top: 0;
-			}
-		}
+				@include breakpoint('<=small') {
+					$gutter: _size(gutter) * 0.5;
 
-		#header + & {
-			> .wrapper {
-				> .inner {
-					margin: 0 auto;
+					padding: 0 $gutter;
 				}
 			}
 		}

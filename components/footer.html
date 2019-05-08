@@ -1,8 +1,14 @@
 <!-- Footer -->
-<footer id="footer" class="wrapper {% if page.template == "home" %}{{ site.data.footer.landing_style }}{% else %}{{ site.data.footer.alt_style }}{% endif %}">
+<footer id="footer">
     <div class="inner">
-        <ul class="menu">
-            <li>{{ site.data.footer.copyright | safe }}</li>
+        {% if site.data.contact.enabled %}
+            {% include "contact.html" %}
+        {% endif %}
+        {% if site.data.social.enabled %}
+            {% include "social.html" %}
+        {% endif %}
+        <ul class="copyright">
+            <li>&copy; {{ site.title }}. All rights reserved</li>
         </ul>
     </div>
 </footer>
