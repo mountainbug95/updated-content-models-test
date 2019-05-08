@@ -1,0 +1,11 @@
+---
+layout: body
+---
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        {% for section in page.sections %}
+            
+            {% include {{ section.component }} section=section site=site page=page %}
+        {% endfor %}
+    </div>

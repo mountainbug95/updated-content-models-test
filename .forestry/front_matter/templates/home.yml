@@ -45,4 +45,4 @@ fields:
     config:
       required: true
 pages:
-  - _index.md
+  - index.md

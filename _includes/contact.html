@@ -1,8 +1,8 @@
 <!-- Three -->
-<section id="{{ .section.section_id }}" class="wrapper {{ .section.background_style }} fade-up">
+<section id="{{ include.section.section_id }}" class="wrapper {{ include.section.background_style }} fade-up">
     <div class="inner">
-        <h2>{{ .section.title }}</h2>
-        {{ partial "markdownify-block" .section.text }}
+        <h2>{{ include.section.title }}</h2>
+        {{ include.section.text | markdownify }}
         <div class="split style1">
             <section>
                 <form method="post" action="#">
@@ -27,28 +27,28 @@
             </section>
             <section>
                 <ul class="contact">
-                    {{ if .section.contact_list }}
-                        {{ range $item := .section.contact_list }}
+                    {% if include.section.contact_list %}
+                        {% for item in include.section.contact_list %}
                             <li>
-                                <h3>{{ $item.title }}</h3>
-                                {{ if $item.url }}
-                                    <a href="{{ $item.url }}">{{ $item.text }}</a>
-                                {{ else }}
-                                    <span>{{ replace $item.text "\n" "<br />" | safeHTML }}</span>
-                                {{ end }}
+                                <h3>{{ item.title }}</h3>
+                                {% if item.url %}
+                                    <a href="{{ item.url }}">{{ item.text }}</a>
+                                {% else %}
+                                    <span>{{ item.text | newline_to_br }}</span>
+                                {% endif %}
                             </li>
-                        {{ end }}
-                    {{ end }}
-                    {{ if .section.social }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if include.section.social %}
                         <li>
-                            <h3>{{ .section.social.title }}</h3>
+                            <h3>{{ include.section.social.title }}</h3>
                             <ul class="icons">
-                                {{ range $item := .section.social.social_icons }}
-                                    <li><a href="{{ $item.url }}" class="{{ $item.icon }}"><span class="label">{{ $item.title }}</span></a></li>
-                                {{ end }}
+                                {% for item in include.section.social.social_icons %}
+                                    <li><a href="{{ item.url }}" class="{{ item.icon }}"><span class="label">{{ item.title }}</span></a></li>
+                                {% endfor %}
                             </ul>
                         </li>
-                    {{ end }}
+                    {% endif %}
                 </ul>
             </section>
         </div>

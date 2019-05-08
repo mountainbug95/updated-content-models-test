@@ -12,62 +12,76 @@ models:
         description: Site title
         required: true
       - type: string
-        name: baseURL
+        name: baseurl
         label: Base URL
-        description: Hostname (and path) to the root
+        description: Serve the website from the given base URL
         hidden: true
-      - type: object
-        name: params
-        label: Params
-        description: Site parameters
+      - type: string
+        name: permalink
+        label: Permalink
+        description: 'The output path for your pages, posts, or collections.'
+        default: '/posts/:slug:output_ext'
+        hidden: true
+      - type: enum
+        name: palette
+        label: Color Palette
+        options:
+          - blue
+          - green
+          - purple
         required: true
-        fields:
-          - type: enum
-            name: palette
-            label: Color Palette
-            options:
-              - blue
-              - green
-              - purple
-            required: true
-            description: The color palette used for the page
-          - type: object
-            name: palettes
-            label: Palettes
-            hidden: true
-            fields:
-              - type: palette
-                name: blue
-                label: Blue
-              - type: palette
-                name: green
-                label: Green
-              - type: palette
-                name: purple
-                label: Purple
-      - type: list
-        name: disableKinds
-        label: Disable Kinds
-        description: Enable disabling of all pages of the specified Kinds.
-        items:
-          type: enum
-          options:
-            - page
-            - home
-            - section
-            - taxonomy
-            - taxonomyTerm
-            - RSS
-            - sitemap
-            - robotsTXT
-            - '404'
+        description: The color palette used for the page
+      - type: object
+        name: palettes
+        label: Palettes
         hidden: true
-      - type: boolean
-        name: uglyURLs
-        label: Ugly URLs
-        description: >-
-          When enabled, creates URL of the form /filename.html instead of
-          /filename/.
+        fields:
+          - type: palette
+            name: blue
+            label: Blue
+          - type: palette
+            name: green
+            label: Green
+          - type: palette
+            name: purple
+            label: Purple
+      - type: object
+        name: sass
+        label: Sass
+        hidden: true
+        fields:
+          - type: number
+            name: indentWidth
+            label: Indent Width
+            description: >-
+              Used to determine the number of spaces or tabs to be used for
+              indentation.
+            default: 4
+          - type: enum
+            name: style
+            label: Output Style
+            description: Determines the output format of the final CSS style.
+            options:
+              - nested
+              - expanded
+              - compact
+              - compressed
+            default: nested
+          - type: number
+            name: precision
+            label: Precision
+            description: >-
+              Used to determine how many digits after the decimal will be
+              allowed.
+            default: 10
+      - type: list
+        name: plugins
+        label: Plugins
+        hidden: true
+      - type: list
+        name: exclude
+        label: Exclude
+        description: Exclude directories and/or files from the conversion.
         hidden: true
   footer:
     type: data
@@ -106,7 +120,7 @@ models:
     hideContent: true
     singleInstance: true
     template: home
-    file: _index.md
+    file: index.md
     fields:
       - type: string
         name: title
@@ -425,13 +439,13 @@ models:
           - type: string
             name: accent3
             label: Accent3
-ssgName: hugo
-publishDir: public
+ssgName: jekyll
+publishDir: _site
 buildCommand: ./ssg-build.sh
 injectLocations:
   htmlHead:
-    file: layouts/_default/baseof.html
+    file: _layouts/base.html
     tagName: head
   htmlBody:
-    file: layouts/_default/baseof.html
+    file: _layouts/base.html
     tagName: body

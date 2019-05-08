@@ -1,0 +1,13 @@
+---
+layout: base
+---
+
+    {% if page.layout == 'home' %}
+        {% include sidebar.html %}
+    {% else %}
+        {% include header.html %}
+    {% endif %}
+
+    {{ content }}
+
+    {% include footer.html %}

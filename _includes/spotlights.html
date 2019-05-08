@@ -1,0 +1,20 @@
+<!-- One -->
+<section id="{{ include.section.section_id }}" class="wrapper {{ include.section.background_style }} spotlights">
+    {% assign arr = include.site.pages | where_exp: 'item', 'item.home_spotlights.enabled == true' | sort: 'home_spotlights.weight' %}
+    {% for spotlight_page in arr %}
+        <section>
+            {% if spotlight_page.home_spotlights.home_img %}
+                <a href="{{ spotlight_page.url | relative_url }}" class="image"><img src="{{ spotlight_page.home_spotlights.home_img.path | relative_url }}" alt="" data-position="{{ spotlight_page.home_spotlights.home_img.data_position }}" /></a>
+            {% endif %}
+            <div class="content">
+                <div class="inner">
+                    <h2>{{ spotlight_page.title }}</h2>
+                    {{ spotlight_page.home_spotlights.excerpt | markdownify }}
+                    <ul class="actions">
+                        <li><a href="{{ spotlight_page.url | relative_url }}" class="button">Learn more</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+</section>

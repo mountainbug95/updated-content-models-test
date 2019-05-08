@@ -1,3 +1,6 @@
+---
+---
+
 // Misc.
 $misc: (
     z-index-base:		10000,
@@ -32,21 +35,21 @@ $font: (
 );
 
 // Palette.
-{{ $palette := (index .Site.Params.palettes .Site.Params.palette).sass }}
+{% assign palette = site.palettes[site.palette].sass %}
 $palette: (
-    bg:					{{ $palette.bg }},
-    bg-alt:				darken({{ $palette.bg }}, 5),
+    bg:					{{ palette.bg }},
+    bg-alt:				darken({{ palette.bg }}, 5),
     fg:					rgba(255,255,255,0.55),
     fg-bold:			#ffffff,
     fg-light:			rgba(255,255,255,0.35),
     border:				rgba(255,255,255,0.15),
     border-bg:			rgba(255,255,255,0.05),
-    accent1:			{{ $palette.accent1 }},
-    accent1-alt:		darken({{ $palette.accent1 }}, 10),
-    accent2:			{{ $palette.accent2 }},
-    accent2-alt:		darken({{ $palette.accent2 }}, 10),
-    accent3:			{{ $palette.accent3 }},
-    accent3-alt:		darken({{ $palette.accent3 }}, 10)
+    accent1:			{{ palette.accent1 }},
+    accent1-alt:		darken({{ palette.accent1 }}, 10),
+    accent2:			{{ palette.accent2 }},
+    accent2-alt:		darken({{ palette.accent2 }}, 10),
+    accent3:			{{ palette.accent3 }},
+    accent3-alt:		darken({{ palette.accent3 }}, 10)
 );
 @import 'libs/functions';
 @import 'libs/mixins';

@@ -1,0 +1,12 @@
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                {% for item in page.sidebar.entries %}
+                    <li><a href="{% assign expr_1 = item.url | starts_with: '#' %}{% if expr_1 %}{{ item.url }}{% else %}{{ item.url | link | relative_url }}{% endif %}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</section>

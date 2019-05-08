@@ -6,10 +6,18 @@ The content of this site is managed by Forestry. Visit [https://forestry.io](htt
 
 # Running Your Site Locally
 
-1. [Install Hugo](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
+1. Install a full [Ruby development environment](https://jekyllrb.com/docs/installation/)
 
-1. Build the site and start the Hugo server with drafts enabled
+1. Install Jekyll and Bundler
 
-        hugo server -D
+        gem install jekyll bundler
 
-1. Browse to [http://localhost:1313/](http://localhost:1313/)
+1. Install dependencies from Gemfile:
+
+        bundle install
+
+1. Build the site and make it available on a local server
+
+        bundle exec jekyll serve
+
+1. Browse to [http://localhost:4000](http://localhost:4000)
