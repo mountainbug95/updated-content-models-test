@@ -23,16 +23,15 @@ fields:
   - type: select
     name: palette
     label: Color Palette
-    default: blue
+    description: The color palette used in the theme
     config:
       required: true
       source:
         type: custom
       options:
         - blue
-        - cyan
-        - green
-        - red
+        - magenta
+        - purple
   - type: field_group
     name: palettes
     label: Palettes
@@ -47,24 +46,16 @@ fields:
             label: Palette
             template: palette
       - type: field_group
-        name: cyan
-        label: Cyan
+        name: magenta
+        label: Magenta
         fields:
           - type: include
             name: include_palette
             label: Palette
             template: palette
       - type: field_group
-        name: green
-        label: Green
-        fields:
-          - type: include
-            name: include_palette
-            label: Palette
-            template: palette
-      - type: field_group
-        name: red
-        label: Red
+        name: purple
+        label: Purple
         fields:
           - type: include
             name: include_palette

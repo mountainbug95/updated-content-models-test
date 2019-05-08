@@ -6,7 +6,6 @@ fields:
   - type: field_group_list
     name: social_icons
     label: Social Media Icons
-    description: A list of social media icons displayed in the site footer
     config:
       labelField: title
     fields:
@@ -16,15 +15,13 @@ fields:
         config:
           required: true
       - type: text
-        name: url
-        label: URL
-      - type: text
         name: icon
         label: Icon
-        description: Font Awesome icon
-        config:
-          required: true
+        description: Font Awesome Icon
+      - type: text
+        name: url
+        label: Icon URL
   - type: text
     name: copyright
-    label: Copyright Text
-    description: The copyright text displayed at the bottom of the page footer
+    label: Footer Copyright
+    description: The copyright text displayed in the page footer.

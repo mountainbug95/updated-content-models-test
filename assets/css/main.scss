@@ -3,21 +3,19 @@
 
 // Misc.
 $misc: (
-    z-index-base:		10000
 );
 
 // Duration.
 $duration: (
-    menu:				0.5s,
     transition:			0.2s
 );
 
 // Size.
 $size: (
-    border-radius:		4px,
+    border-radius:		6px,
     border-width:		1px,
     element-height:		2.75em,
-    element-margin:		3em
+    element-margin:		2em
 );
 
 // Font.
@@ -31,15 +29,14 @@ $font: (
 // Palette.
 {% assign palette = site.palettes[site.palette].sass %}
 $palette: (
-    bg:					#f5f5f5,
-    fg:					#b8b8b8,
-    fg-bold:			#8f8f8f,
-    fg-light:			#b8b8b8,
-    border:				rgba(144,144,144,0.25),
+    bg:					#ffffff,
+    fg:					#999999,
+    fg-bold:			#828282,
+    fg-light:			#e0e0e0,
+    border:				#e6e6e6,
     border-bg:			rgba(144,144,144,0.075),
-    border2:			rgba(144,144,144,0.5),
-    border2-bg:			rgba(144,144,144,0.2),
-    highlight:			accent1,
+    border2:			#d6d6d6,
+    border2-bg:			rgba(144,144,144,0.15),
 
     accent1: (
         bg:				{{ palette.color }},
@@ -50,19 +47,31 @@ $palette: (
         border-bg:		rgba(255,255,255,0.075),
         border2:		rgba(255,255,255,0.5),
         border2-bg:		rgba(255,255,255,0.2),
-        highlight:		accent1
+        invert:			true
     ),
 
     accent2: (
-        bg:				#fff,
-        fg:				#b8b8b8,
-        fg-bold:		#8f8f8f,
-        fg-light:		#b8b8b8,
-        border:			rgba(144,144,144,0.25),
+        bg:				#fbfbfb,
+        fg:				#999999,
+        fg-bold:		#828282,
+        fg-light:		#e0e0e0,
+        border:			#e6e6e6,
         border-bg:		rgba(144,144,144,0.075),
-        border2:		rgba(144,144,144,0.5),
-        border2-bg:		rgba(144,144,144,0.2),
-        highlight:		accent1
+        border2:		#d6d6d6,
+        border2-bg:		rgba(144,144,144,0.15),
+        invert:			false
+    ),
+
+    accent3: (
+        bg:				#f7f7f7,
+        fg:				#999999,
+        fg-bold:		#828282,
+        fg-light:		#b0b0b0,
+        border:			#d6d6d6,
+        border-bg:		rgba(144,144,144,0.075),
+        border2:		#c6c6c6,
+        border2-bg:		rgba(144,144,144,0.15),
+        invert:			false
     )
 );
 @import 'libs/functions';
@@ -73,7 +82,7 @@ $palette: (
 @import 'font-awesome.min.css';
 
 /*
-	Construct by Pixelarity
+	Fractal by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -85,22 +94,20 @@ $palette: (
 		large:    ( 981px,   1280px ),
 		medium:   ( 737px,   980px  ),
 		small:    ( 481px,   736px  ),
-		xsmall:   ( null,    480px  ),
+		xsmall:   ( 361px,   480px  ),
+		xxsmall:  ( null,    360px  )
 	));
 
 // Mixins.
 
-	@mixin color($p) {
-		@include color-typography($p);
-		@include color-box($p);
+	@mixin color($p: null) {
 		@include color-button($p);
 		@include color-form($p);
+		@include color-icon($p);
+		@include color-image($p);
 		@include color-list($p);
-		@include color-icons($p);
-		@include color-section($p);
 		@include color-table($p);
-		@include color-features($p);
-		@include color-spotlights($p);
+		@include color-typography($p);
 	}
 
 // Base.
@@ -121,15 +128,12 @@ $palette: (
 	@import 'components/actions';
 	@import 'components/icons';
 	@import 'components/section';
+	@import 'components/spotlight';
 	@import 'components/table';
-	@import 'components/highlights';
-	@import 'components/features';
-	@import 'components/spotlights';
 	@import 'components/wrapper';
 
 // Layout.
 
-	@import 'layout/banner';
 	@import 'layout/header';
 	@import 'layout/main';
 	@import 'layout/footer';

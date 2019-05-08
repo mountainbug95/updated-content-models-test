@@ -1,4 +1,3 @@
-set -e
-set -o pipefail
 
+./build-cms.sh
 bundle exec jekyll build

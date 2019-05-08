@@ -1,5 +1,5 @@
 /*
-	Construct by Pixelarity
+	Fractal by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -15,7 +15,8 @@
 			large:    [ '981px',   '1280px' ],
 			medium:   [ '737px',   '980px'  ],
 			small:    [ '481px',   '736px'  ],
-			xsmall:   [ null,      '480px'  ]
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -25,32 +26,25 @@
 			}, 100);
 		});
 
-	// Fix: Enable IE flexbox workarounds.
-		if (browser.name == 'ie')
-			$body.addClass('is-ie');
+	// Mobile?
+		if (browser.mobile)
+			$body.addClass('is-mobile');
+		else {
+
+			breakpoints.on('>medium', function() {
+				$body.removeClass('is-mobile');
+			});
+
+			breakpoints.on('<=medium', function() {
+				$body.addClass('is-mobile');
+			});
+
+		}
 
 	// Scrolly.
-		$('.scrolly').scrolly();
-
-	// Highlights.
-		$('.highlights > section')
-			.each(function() {
-
-				var	$this = $(this),
-					$image = $this.find('.image'),
-					$img = $image.find('img'),
-					x;
-
-				// Assign image.
-					$image.css('background-image', 'url(' + $img.attr('src') + ')');
-
-				// Set background position.
-					if (x = $img.data('position'))
-						$image.css('background-position', x);
-
-				// Hide <img>.
-					$img.hide();
-
+		$('.scrolly')
+			.scrolly({
+				speed: 1500
 			});
 
 })(jQuery);

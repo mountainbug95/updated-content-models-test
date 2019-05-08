@@ -1,12 +1,11 @@
-<!-- Intro -->
-<section id="{{ include.section.section_id }}" class="special">
+<!-- One -->
+<section id="{{ include.section.section_id }}" class="wrapper {{ include.section.background_style }} special">
     <header class="major">
-        <h2>{{ include.section.title }}</h2>
-        {{ include.section.subtitle | markdownify }}
+        <h2>{{ include.section.title | newline_to_br }}</h2>
     </header>
-    <ul class="icons large series">
+    <ul class="icons major">
         {% for item in include.section.icons %}
-            <li class="icon {{ item.icon }}"></li>
+            <li><span class="icon {{ item.icon }}"><span class="label">{{ item.title }}</span></span></li>
         {% endfor %}
     </ul>
 </section>

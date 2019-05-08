@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Fractal by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -30,7 +30,8 @@
 			padding-left: 0;
 
 			li {
-				border-top: solid _size(border-width);
+				border-top-style: solid;
+				border-top-width: _size(border-width);
 				padding: 0.5em 0;
 
 				&:first-child {
@@ -56,19 +57,11 @@
 	}
 
 	@mixin color-list($p: null) {
-		$highlight: _palette($p, highlight);
-
 		ul {
 			&.alt {
-				li {
+				> li {
 					border-top-color: _palette($p, border);
 				}
-			}
-		}
-
-		dl {
-			dt {
-				color: _palette($p, fg-bold);
 			}
 		}
 	}

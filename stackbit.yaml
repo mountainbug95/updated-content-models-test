@@ -27,11 +27,10 @@ models:
         label: Color Palette
         options:
           - blue
-          - cyan
-          - green
-          - red
+          - magenta
+          - purple
         required: true
-        default: blue
+        description: The color palette used in the theme
       - type: object
         name: palettes
         label: Palettes
@@ -39,12 +38,13 @@ models:
         fields:
           - type: palette
             name: blue
+            label: Blue
           - type: palette
-            name: cyan
+            name: magenta
+            label: Magenta
           - type: palette
-            name: green
-          - type: palette
-            name: red
+            name: purple
+            label: Purple
       - type: object
         name: sass
         label: Sass
@@ -83,15 +83,46 @@ models:
         label: Exclude
         description: Exclude directories and/or files from the conversion.
         hidden: true
+  header:
+    type: data
+    file: header.yml
+    label: Header Configuration
+    fields:
+      - type: string
+        name: title_url
+        label: Title URL
+        widget: url
+        description: The link used in the page title
+      - type: markdown
+        name: subtitle
+        label: Header Subtitle
+        description: The text displayed below the page title
+      - type: list
+        name: actions
+        label: Header Actions
+        description: The action buttons displayed in the page header
+        items:
+          type: action
+      - type: object
+        name: img
+        label: Header Image
+        fields:
+          - type: image
+            name: path
+            label: Image
+          - type: boolean
+            name: phone_border
+            label: Header Image Phone Border
+            default: false
+            description: Puts a phone border around the header image
   footer:
     type: data
-    label: Footer Configuration
     file: footer.yml
+    label: Footer Configuration
     fields:
       - type: list
         name: social_icons
         label: Social Media Icons
-        description: A list of social media icons displayed in the site footer
         items:
           type: object
           labelField: title
@@ -101,18 +132,17 @@ models:
               label: Icon Title
               required: true
             - type: string
-              name: url
-              label: URL
-              widget: url
-            - type: string
               name: icon
               label: Icon
-              required: true
-              description: Font Awesome icon
+              description: Font Awesome Icon
+            - type: string
+              name: url
+              label: Icon URL
+              widget: url
       - type: string
         name: copyright
-        label: Copyright Text
-        description: The copyright text displayed at the bottom of the page footer
+        label: Footer Copyright
+        description: The copyright text displayed in the page footer.
   home:
     type: page
     label: Home
@@ -124,28 +154,6 @@ models:
       - type: string
         name: title
         label: Page Title
-        required: true
-      - type: object
-        name: banner
-        label: Page Banner
-        description: The banner displayed at the top of the landing page
-        fields:
-          - type: string
-            name: title
-            label: Banner Title
-            required: true
-            description: The first line of text displayed in the page banner
-          - type: markdown
-            name: subtitle
-            label: Banner Subtitle
-            description: The text displayed below the banner title
-          - type: boolean
-            name: show_scroll_button
-            label: Show Scroll Button
-            default: false
-            description: >-
-              Displays a button at the bottom of the page banner that scrolls
-              down to the page content when clicked
       - type: list
         name: sections
         label: Sections
@@ -155,161 +163,58 @@ models:
           labelField: title
           models:
             - icons
-            - highlights
-            - features
             - spotlights
-      - type: object
-        name: cta
-        label: CTA
-        description: The CTA displayed at the bottom of the landing page
-        fields:
-          - type: boolean
-            name: enabled
-            label: Enabled
-            default: false
-            description: displays the CTA at the bottom of the landing page
-          - type: string
-            name: title
-            label: CTA Title
-            description: the first line of text displayed in the CTA
-          - type: markdown
-            name: text
-            label: CTA Text
-            description: The text displayed below the CTA title
-          - type: enum
-            name: background_style
-            label: Background Style
-            options:
-              - style1
-              - style2
-              - style3
-            default: style1
-            description: Controls the CTA background color
-          - type: list
-            name: actions
-            label: CTA Action Buttons
-            items:
-              type: action
-  page:
-    type: page
-    label: Page
-    template: page
-    fields:
-      - type: string
-        name: title
-        label: Page Title
-        required: true
-        description: The bold first line of text in the page content area
-      - type: boolean
-        name: display_header
-        label: Display Page Header
-        default: false
-        description: Displays the site title at the top of the page
-      - type: markdown
-        name: subtitle
-        label: Page Subtitle
-        description: The text displayed below the page title
-      - type: image
-        name: content_img
-        label: Content Image
-        description: The image displayed below the page subtitle
-      - type: object
-        name: home
-        label: Home Sections
-        description: >-
-          Configures the page sections for the home highlights and spotlights
-          sections
-        fields:
-          - type: object
-            name: highlights
-            label: Highlights Section
-            fields:
-              - type: boolean
-                name: enabled
-                label: Enabled
-                default: false
-                description: displays the page highlight in the home highlights section
-              - type: number
-                name: weight
-                label: Weight
-                default: 1
-                description: The index of the page highlight in the home highlights section
-              - type: markdown
-                name: excerpt
-                label: Page Excerpt
-                description: The excerpt displayed in the home highlights section
-              - type: object
-                name: home_img
-                label: Home Highlight Image
-                description: The image displayed in the home highlights section
-                fields:
-                  - type: image
-                    name: path
-                    label: Image
-                  - type: string
-                    name: data_position
-                    label: Data Position
-                    default: center right
-                    description: >-
-                      The position of the image in its container (center, center
-                      left, right, etc.)
-          - type: object
-            name: spotlights
-            label: Spotlights Section
-            fields:
-              - type: boolean
-                name: enabled
-                label: Enabled
-                default: false
-                description: displays the page highlight in the home spotlights section
-              - type: number
-                name: weight
-                label: Weight
-                default: 1
-                description: The index of the page highlight in the home spotlights section
-              - type: markdown
-                name: excerpt
-                label: Page Excerpt
-                description: The excerpt displayed in the home spotlights section
-              - type: image
-                name: home_img_path
-                label: Home Spotlight Image
-                description: The image displayed in the home spotlights section
+            - cta
   elements:
     type: page
     label: Elements
-    hideContent: true
+    template: elements
     singleInstance: true
     file: elements.md
-    template: elements
+    hideContent: true
     fields:
       - type: string
         name: title
         label: Page Title
         required: true
-  palette:
+  action:
     type: object
-    label: Palette
+    label: Action
+    labelField: label
     fields:
-      - type: object
-        name: sass
-        label: Sass
-        fields:
-          - type: string
-            name: color
-            label: Color
+      - type: string
+        name: label
+        label: Button Label
+      - type: string
+        name: icon
+        label: Button Icon
+        description: Font Awesome Icon
+      - type: string
+        name: url
+        label: Button URL
+        widget: url
+      - type: boolean
+        name: is_primary
+        label: Is Primary
+        default: false
+        description: Gives the button a primary color scheme
+      - type: boolean
+        name: is_scrolly
+        label: Is Scrolly
+        default: false
+        description: adds a scroll animation (enable if button URL is set to a section ID)
   section:
     type: object
     label: Section
     hideContent: true
     labelField: title
     fields:
-      - type: string
+      - type: text
         name: title
         label: Section Title
         required: true
         description: >-
-          The text displayed at the top of the section (Also used by the CMS,
+          The title displayed at the top of the section (Also used by the CMS,
           even if no title is displayed in the section)
       - type: string
         name: section_id
@@ -328,81 +233,26 @@ models:
     fields:
       - name: title
         default: Icons Section
-      - type: markdown
-        name: subtitle
-        label: Section Subtitle
-        description: The text displayed below the section title
       - name: section_id
         default: one
+      - name: component
+        const: icons.html
+      - type: enum
+        name: background_style
+        label: Background Style
+        options:
+          - style1
+          - style2
+          - style3
+          - style4
+        required: true
+        description: The color style for the background
       - type: list
         name: icons
         label: Icons
-        description: The icons displayed along the bottom of the section
+        description: Icons displayed at the bottom of the section
         items:
-          type: object
-          labelField: icon
-          fields:
-            - type: string
-              name: icon
-              label: Icon
-              required: true
-              description: Font Awesome icon
-      - name: component
-        const: icons.html
-  highlights:
-    type: object
-    label: Highlights Section
-    extends:
-      - section
-    fields:
-      - name: title
-        default: Highlights Section
-      - name: section_id
-        default: two
-      - name: component
-        const: icons.html
-  features:
-    type: object
-    label: Features Section
-    extends:
-      - section
-    fields:
-      - name: title
-        default: Features Section
-      - type: markdown
-        name: subtitle
-        label: Section Subtitle
-        description: the text displayed below the page title
-      - name: section_id
-        default: three
-      - type: list
-        name: features
-        label: Features
-        description: A list of features to be displayed in the section
-        items:
-          type: object
-          labelField: title
-          fields:
-            - type: string
-              name: title
-              label: Feature Title
-              required: true
-              description: The first line of text displayed in the feature
-            - type: markdown
-              name: text
-              label: Feature Text
-              description: The text displayed below the feature title
-            - type: string
-              name: icon
-              label: Feature Icon
-              description: (Font Awesome icon) The icon displayed above the feature title
-      - type: list
-        name: actions
-        label: Section Action Buttons
-        items:
-          type: action
-      - name: component
-        const: features.html
+          type: icon
   spotlights:
     type: object
     label: Spotlights Section
@@ -412,35 +262,88 @@ models:
       - name: title
         default: Spotlights Section
       - name: section_id
-        default: four
+        default: two
       - name: component
         const: spotlights.html
-  action:
+      - type: list
+        name: spotlights
+        label: Spotlight Sections
+        items:
+          type: object
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Spotlight Title
+              required: true
+            - type: markdown
+              name: text
+              label: Spotlight Text
+              description: The text displayed below the spotlight title
+            - type: image
+              name: image
+              label: Spotlight Image
+      - type: list
+        name: icons
+        label: Icons
+        description: Icons displayed at the bottom of the section
+        items:
+          type: icon
+  cta:
     type: object
-    label: Action
-    labelField: label
+    label: CTA Section
+    extends:
+      - section
+    fields:
+      - name: title
+        default: CTA Section
+      - name: section_id
+        default: three
+      - name: component
+        const: cta.html
+      - type: markdown
+        name: subtitle
+        label: Section Subtitle
+        description: The text displayed below the section title
+      - type: enum
+        name: background_style
+        label: Background Style
+        options:
+          - style1
+          - style2
+          - style3
+          - style4
+        required: true
+        description: The color style for the background
+      - type: list
+        name: actions
+        label: CTA Action Buttons
+        items:
+          type: action
+  icon:
+    type: object
+    label: Icon
+    labelField: title
     fields:
       - type: string
-        name: label
-        label: Button Label
-        required: true
-        description: The text displayed inside the button
+        name: title
+        label: Icon Title
       - type: string
-        name: url
-        label: Button URL
-        widget: url
-      - type: boolean
-        name: is_scrolly
-        label: Is Scrolly
-        default: false
-        description: >-
-          Gives the button a scroll animation (if the button url is a section
-          ID)
-      - type: boolean
-        name: is_primary
-        label: Is Primary
-        default: false
-        description: Gives the button a primary color scheme
+        name: icon
+        label: Icon
+        description: Font Awesome Icon
+  palette:
+    type: object
+    label: Palette
+    hidden: true
+    fields:
+      - type: object
+        name: sass
+        label: SASS
+        fields:
+          - type: string
+            name: color
+            label: Color
 ssgName: jekyll
 publishDir: _site
 buildCommand: ./ssg-build.sh

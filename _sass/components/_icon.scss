@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Fractal by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -8,9 +8,18 @@
 
 	.icon {
 		@include icon;
+		border-bottom: none;
 		position: relative;
 
 		> .label {
 			display: none;
 		}
 	}
+
+	@mixin color-icon($p: null) {
+		.icon {
+			color: _palette($p, fg-light);
+		}
+	}
+
+	@include color-icon;

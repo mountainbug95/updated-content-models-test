@@ -1,20 +1,17 @@
-title: Construct
+title: Fractal
 baseurl: /
 permalink: '/posts/:slug:output_ext'
 palette: blue
 palettes:
   blue:
     sass:
-      color: '#4a74c9'
-  cyan:
+      color: '#4696e5'
+  magenta:
     sass:
-      color: '#33bdb5'
-  green:
+      color: '#db5c7a'
+  purple:
     sass:
-      color: '#459e59'
-  red:
-    sass:
-      color: '#ce5667'
+      color: '#786dc2'
 sass:
   indentWidth: 4
   style: nested

@@ -1,19 +1,11 @@
 social_icons:
-  - title: Twitter
-    url: '#'
-    icon: fa-twitter
   - title: Facebook
-    url: '#'
     icon: fa-facebook
-  - title: LinkedIn
     url: '#'
-    icon: fa-linkedin
-  - title: Github
+  - title: Twitter
+    icon: fa-twitter
     url: '#'
-    icon: fa-github
-  - title: Email
+  - title: Instagram
+    icon: fa-instagram
     url: '#'
-    icon: fa-envelope
-copyright: >-
-  &copy; Construct. All rights reserved. Lorem ipsum dolor sit amet nullam
-  consequat.
+copyright: '&copy; Untitled.'

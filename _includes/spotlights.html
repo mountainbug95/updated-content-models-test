@@ -1,20 +1,27 @@
-<!-- Spotlights -->
-<section id="{{ include.section.section_id }}" class="spotlights special">
-    {% assign arr = include.site.pages | where_exp: 'item', 'item.home.spotlights.enabled == true' | sort: 'home.spotlights.weight' %}
-    {% for section_page in arr %}
-        <section>
-            <header class="major">
-                <h3>{{ section_page.title }}</h3>
-            </header>
-            {% if section_page.home.spotlights.home_img_path %}
-                <div class="image fit">
-                    <img src="{{ section_page.home.spotlights.home_img_path }}" alt="" />
-                </div>
-            {% endif %}
-            {{ section_page.home.spotlights.excerpt | markdownify }}
-            <ul class="actions special">
-                <li><a href="{{ section_page.url | relative_url }}" class="button">Learn More</a></li>
-            </ul>
-        </section>
-    {% endfor %}
+<!-- Two -->
+<section id="{{ include.section.section_id }}" class="wrapper">
+    <div class="inner alt">
+        {% if include.section.spotlights %}
+            {% for spotlight in include.section.spotlights %}
+                <section class="spotlight">
+                    {% if spotlight.image %}
+                        <div class="image"><img src="{{ spotlight.image | relative_url }}" alt="" /></div>
+                    {% endif %}
+                    <div class="content">
+                        <h3>{{ spotlight.title }}</h3>
+                        {{ spotlight.text | markdownify }}
+                    </div>
+                </section>
+            {% endfor %}
+        {% endif %}
+        {% if include.section.icons %}
+            <section class="special">
+                <ul class="icons labeled">
+                    {% for item in include.section.icons %}
+                        <li><span class="icon {{ item.icon }}"><span class="label">{{ item.title }}</span></span></li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    </div>
 </section>

@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Fractal by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -7,48 +7,37 @@
 /* Footer */
 
 	#footer {
-		@include padding(6em, 2em);
+		@include color-typography(accent3);
+		@include padding(4.5em, 0);
+		color: _palette(accent3, fg-light);
 		text-align: center;
 
+		a {
+			color: inherit;
+		}
+
 		.copyright {
-			color: _palette(fg-light);
-			font-size: 0.9em;
-			margin: 0 0 _size(element-margin) 0;
-			padding: 0;
-
-			li {
-				border-left: solid _size(border-width) _palette(border);
-				display: inline-block;
-				list-style: none;
-				margin-left: 1.5em;
-				padding-left: 1.5em;
-
-				&:first-child {
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
-			}
+			font-size: 0.8em;
 		}
 
-		@include breakpoint('<=small') {
-			@include padding(4em, 2em);
-
-			.icons {
-				margin-bottom: (_size(element-margin) * 0.75);
+		// Medium.
+			@include breakpoint('<=medium') {
+				@include padding(4em, 4em);
 			}
 
-			.copyright {
-				li {
-					display: block;
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
-			}
-		}
+		// Small.
+			@include breakpoint('<=small') {
 
-		@include breakpoint('<=xsmall') {
-			@include padding(3em, 2em);
-		}
+				// Landscape.
+					@include orientation(landscape) {
+						@include padding(3em, 3em);
+					}
+
+				// Portrait.
+					@include orientation(portrait) {
+						@include padding(3em, 1.5em);
+					}
+
+			}
+
 	}

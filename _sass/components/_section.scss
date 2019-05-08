@@ -1,12 +1,12 @@
 ///
-/// Construct by Pixelarity
+/// Fractal by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
 /* Section/Article */
 
-	section, article, header {
+	section, article {
 		&.special {
 			text-align: center;
 		}
@@ -15,103 +15,57 @@
 	header {
 		p {
 			position: relative;
-			margin: 0 0 (_size(element-margin) * 0.6) 0;
+			margin: 0 0 (_size(element-margin) * 0.75) 0;
+
+			// Small.
+				@include breakpoint('<=small') {
+					br {
+						display: none;
+					}
+				}
+
 		}
 
 		h2 + p {
 			font-size: 1.25em;
-			margin-top: (_size(element-margin) * -0.55);
+			margin-top: (_size(element-margin) * -0.25);
+			line-height: 1.5em;
 		}
 
 		h3 + p {
 			font-size: 1.1em;
-			margin-top: (_size(element-margin) * -0.45);
+			margin-top: (_size(element-margin) * -0.125);
+			line-height: 1.5em;
 		}
 
 		h4 + p,
 		h5 + p,
 		h6 + p {
 			font-size: 0.9em;
-			margin-top: (_size(element-margin) * -0.35);
-		}
-
-		&.special {
-			h2, h3 {
-				&:after {
-					margin-left: auto;
-					margin-right: auto;
-				}
-			}
+			margin-top: (_size(element-margin) * -0.3);
+			line-height: 1.5em;
 		}
 
 		&.major {
-			margin-bottom: (_size(element-margin) * 1.5);
+			margin: 0 0 (_size(element-margin) * 1.25) 0;
+			text-align: center;
 
-			h1, h2, h3 {
-				&:after {
-					content: '';
-					display: block;
-					height: _size(border-width);
-				}
-
-				.special &:after {
-					margin-left: auto;
-					margin-right: auto;
-				}
+			&:after {
+				content: '';
+				border-bottom: solid (_size(border-width) * 2) _palette(border);
+				display: block;
+				width: 4em;
+				margin: _size(element-margin) auto 0 auto;
 			}
 
-			h1, h2 {
-				font-size: 2.55em;
+			// Small.
+				@include breakpoint('<=small') {
+					margin: 0 0 _size(element-margin) 0;
 
-				&:after {
-					margin-top: 0.6em;
-					width: 2em;
-				}
-			}
-
-			h3 {
-				&:after {
-					margin-top: 1em;
-					width: 3em;
-				}
-			}
-		}
-
-		@include breakpoint('<=small') {
-			&.major {
-				margin-bottom: (_size(element-margin) * 0.75);
-
-				h1, h2 {
-					font-size: 2em;
-				}
-			}
-
-			br {
-				display: none;
-			}
-		}
-	}
-
-	footer {
-		&.major {
-			margin-top: (_size(element-margin) * 1.5);
-		}
-	}
-
-	@mixin color-section($p: null) {
-		header {
-			p {
-				color: _palette($p, fg-light);
-			}
-
-			&.major {
-				h1, h2, h3 {
-					&:after {
-						background-color: _palette($p, border2);
+					p {
+						font-size: 1em;
 					}
 				}
-			}
+
 		}
 	}
-
-	@include color-section;

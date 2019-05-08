@@ -4,11 +4,11 @@ hide_body: true
 is_partial: true
 display_field: title
 fields:
-  - type: text
+  - type: textarea
     name: title
     label: Section Title
     description: >-
-      The text displayed at the top of the section (Also used by the CMS, even
+      The title displayed at the top of the section (Also used by the CMS, even
       if no title is displayed in the section)
     config:
       required: true

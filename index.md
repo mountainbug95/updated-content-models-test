@@ -1,92 +1,74 @@
 ---
 title: Home
-banner:
-  title: This is Construct
-  subtitle: |-
-    Aliquam scelerisque rutrum nec donec lorem ipsum dolor sit amet  
-    porttitor ornare tempus dignissim felis magna commodo.
-  show_scroll_button: true
 sections:
-  - title: Dictum lorem feugiat
-    subtitle: >-
-      Nam condimentum ullamcorper quam vitae dictum. Sed consectetur nulla
-      lacus,  
-
-      ultricies ornare lacus volutpat at. Nunc rutrum turpis ipsum. Mauris at
-      vestibulum  
-
-      mauris, eu eleifend lorem ipsum dolor sit amet nullam consequat.
+  - title: |-
+      Sed ipsum magna lorem tempus amet
+      vehicula et gravida elementum
     section_id: one
+    background_style: style2
     icons:
-      - icon: fa-coffee
-      - icon: fa-code
-      - icon: fa-cloud
-    component: icons.html
-    type: icons
-    template: icons
-  - title: Highlights Section
-    section_id: two
-    component: highlights.html
-    type: highlights
-    template: highlights
-  - title: Commodo justo interdum
-    subtitle: >-
-      Nam condimentum ullamcorper quam vitae dictum. Sed consectetur nulla
-      lacus,  
-
-      ultricies ornare lacus volutpat at. Nunc rutrum turpis ipsum.
-    section_id: three
-    features:
-      - title: Facilisis tempus
-        text: >-
-          Aliquet nisl, ac commodo neque est et dolor. Donec sed amet ornare,
-          justo non pulvinar interdum, neque justo auctor lectus, facilisis diam
-          tempus.
+      - title: Shoot
         icon: fa-camera-retro
-      - title: Lectus magna
+      - title: Process
+        icon: fa-refresh
+      - title: Upload
+        icon: fa-cloud
+    type: icons
+    component: icons.html
+    template: icons
+  - title: Spotlights Section
+    section_id: two
+    spotlights:
+      - title: Magna sed ultrices
         text: >-
-          Aliquet nisl, ac commodo neque est et dolor. Donec sed amet ornare,
-          justo non pulvinar interdum, neque justo auctor lectus, facilisis diam
-          tempus.
-        icon: fa-cog
-      - title: Ipsum lorem
+          Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum
+          elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In
+          convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.
+        image: images/pic01.jpg
+      - title: Ultrices nullam aliquam
         text: >-
-          Aliquet nisl, ac commodo neque est et dolor. Donec sed amet ornare,
-          justo non pulvinar interdum, neque justo auctor lectus, facilisis diam
-          tempus.
-        icon: fa-diamond
-      - title: Feugiat veroeros
+          Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum
+          elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In
+          convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.
+        image: images/pic02.jpg
+      - title: Aliquam sed magna
         text: >-
-          Aliquet nisl, ac commodo neque est et dolor. Donec sed amet ornare,
-          justo non pulvinar interdum, neque justo auctor lectus, facilisis diam
-          tempus.
-        icon: fa-floppy-o
+          Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum
+          elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In
+          convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.
+        image: images/pic03.jpg
+    icons:
+      - title: Ipsum lorem accumsan
+        icon: fa-camera-retro
+      - title: Sed vehicula elementum
+        icon: fa-refresh
+      - title: Elit fusce consequat
+        icon: fa-cloud
+      - title: Lorem nullam tempus
+        icon: fa-code
+      - title: Adipiscing amet sapien
+        icon: fa-desktop
+    type: spotlights
+    component: spotlights.html
+    template: spotlights
+  - title: Magna leo sapien gravida
+    subtitle: |-
+      Gravida at leo elementum elit fusce accumsan dui libero, quis vehicula  
+      lectus ultricies eu. In convallis amet leo sapien iaculis efficitur.
+    section_id: three
+    background_style: style2
     actions:
+      - label: Download
+        url: '#'
+        is_primary: true
+        is_scrolly: false
+        icon: fa-download
       - label: Learn More
         url: elements.md
-        is_scrolly: false
         is_primary: false
-    component: features.html
-    type: features
-    template: features
-  - title: Spotlights Section
-    section_id: four
-    component: spotlights.html
-    type: spotlights
-    template: spotlights
-cta:
-  enabled: true
-  title: Amet magna tempus
-  text: >-
-    Ultricies ornare lacus volutpat at. Nunc rutrum turpis ipsum. Mauris at
-    vestibulum  
-
-    mauris, eu eleifend lorem ipsum dolor sit amet nullam consequat.
-  background_style: style1
-  actions:
-    - label: Get Started
-      url: generic.md
-      is_scrolly: false
-      is_primary: true
+        is_scrolly: false
+    type: cta
+    component: cta.html
+    template: cta
 layout: home
 ---
