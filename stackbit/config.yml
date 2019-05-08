@@ -1,0 +1,20 @@
+enabled: true
+status: enabled
+title: Hyperspace
+description: a multi-page theme with scroll-animated home sections
+weight: 6
+author: Pixelarity
+authorURL: https://pixelarity.com
+palettes:
+  blue:
+    images:
+      small: images/demo-blue-256x192.png
+      large: images/demo-blue-1024x768.png
+  green:
+    images:
+      small: images/demo-green-256x192.png
+      large: images/demo-green-1024x768.png
+  purple:
+    images:
+      small: images/demo-purple-256x192.png
+      large: images/demo-purple-1024x768.png

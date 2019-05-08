@@ -1,4 +1,4 @@
-uploadDir: images
+uploadDir: "images"
 models:
   config:
     type: config
@@ -6,29 +6,10 @@ models:
     hideContent: true
     singleInstance: true
     fields:
-      - type: string
-        name: title
-        label: Title
-        description: Site title
-        required: true
-      - type: string
-        name: baseurl
-        label: Base URL
-        description: Serve the website from the given base URL
-        hidden: true
-      - type: string
-        name: permalink
-        label: Permalink
-        description: 'The output path for your pages, posts, or collections.'
-        default: '/posts/:slug:output_ext'
-        hidden: true
       - type: enum
         name: palette
         label: Color Palette
-        options:
-          - blue
-          - green
-          - purple
+        options: [blue, green, purple]
         required: true
         description: The color palette used for the page
       - type: object
@@ -45,44 +26,6 @@ models:
           - type: palette
             name: purple
             label: Purple
-      - type: object
-        name: sass
-        label: Sass
-        hidden: true
-        fields:
-          - type: number
-            name: indentWidth
-            label: Indent Width
-            description: >-
-              Used to determine the number of spaces or tabs to be used for
-              indentation.
-            default: 4
-          - type: enum
-            name: style
-            label: Output Style
-            description: Determines the output format of the final CSS style.
-            options:
-              - nested
-              - expanded
-              - compact
-              - compressed
-            default: nested
-          - type: number
-            name: precision
-            label: Precision
-            description: >-
-              Used to determine how many digits after the decimal will be
-              allowed.
-            default: 10
-      - type: list
-        name: plugins
-        label: Plugins
-        hidden: true
-      - type: list
-        name: exclude
-        label: Exclude
-        description: Exclude directories and/or files from the conversion.
-        hidden: true
   footer:
     type: data
     file: footer.yml
@@ -92,23 +35,13 @@ models:
         name: landing_style
         label: Home Footer Style
         required: true
-        options:
-          - alt
-          - style1-alt
-          - style2-alt
-          - style3-alt
-          - style4-alt
+        options: [alt, style1-alt, style2-alt, style3-alt, style4-alt]
         description: The style of the home page footer
       - type: enum
         name: alt_style
         label: Default Footer Style
         required: true
-        options:
-          - alt
-          - style1-alt
-          - style2-alt
-          - style3-alt
-          - style4-alt
+        options: [alt, style1-alt, style2-alt, style3-alt, style4-alt]
         description: The style of the page footer
       - type: string
         name: copyright
@@ -147,7 +80,7 @@ models:
                   name: url
                   label: URL
                   widget: url
-                  description: 'the URL, or section ID of the sidebar entry'
+                  description: the URL, or section ID of the sidebar entry
       - type: list
         name: sections
         label: Sections
@@ -155,11 +88,7 @@ models:
         items:
           type: reference
           labelField: title
-          models:
-            - intro
-            - spotlights
-            - features
-            - contact
+          models: [intro, spotlights, features, contact]
   page:
     type: page
     label: page
@@ -202,9 +131,7 @@ models:
                 name: data_position
                 label: Image Data Position
                 default: top center
-                description: >-
-                  Controls the place of the image in its container (bottom left,
-                  top right, center center, etc.)
+                description: Controls the place of the image in its container (bottom left, top right, center center, etc.)
               - type: string
                 name: url
                 label: URL
@@ -231,9 +158,7 @@ models:
         name: title
         label: Section Title
         required: true
-        description: >-
-          The bold text displayed at the top of the section (Also used by the
-          CMS, even if no title is displayed in the section)
+        description: The bold text displayed at the top of the section (Also used by the CMS, even if no title is displayed in the section)
       - type: string
         name: section_id
         label: Section ID
@@ -241,11 +166,7 @@ models:
       - type: enum
         name: background_style
         label: Background Style
-        options:
-          - style1
-          - style2
-          - style3
-          - style4
+        options: [style1, style2, style3, style4]
         required: true
         description: The color scheme used for the section
       - type: string
@@ -256,8 +177,7 @@ models:
   intro:
     type: object
     label: Intro Section
-    extends:
-      - section
+    extends: [section]
     fields:
       - name: title
         default: Intro Section
@@ -279,8 +199,7 @@ models:
   spotlights:
     type: object
     label: Spotlights Section
-    extends:
-      - section
+    extends: [section]
     fields:
       - name: title
         default: Spotlights Section
@@ -293,8 +212,7 @@ models:
   features:
     type: object
     label: Features Section
-    extends:
-      - section
+    extends: [section]
     fields:
       - name: title
         default: Features Section
@@ -335,8 +253,7 @@ models:
   contact:
     type: object
     label: Contact Section
-    extends:
-      - section
+    extends: [section]
     fields:
       - name: title
         default: Contact Section
@@ -439,13 +356,3 @@ models:
           - type: string
             name: accent3
             label: Accent3
-ssgName: jekyll
-publishDir: _site
-buildCommand: ./ssg-build.sh
-injectLocations:
-  htmlHead:
-    file: _layouts/base.html
-    tagName: head
-  htmlBody:
-    file: _layouts/base.html
-    tagName: body
