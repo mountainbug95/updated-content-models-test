@@ -8,5 +8,20 @@ fields:
     label: SASS
     fields:
       - type: text
-        name: color
-        label: Color
+        name: bg
+        label: BG
+      - type: text
+        name: accent1
+        label: Accent1
+      - type: text
+        name: accent2
+        label: Accent2
+      - type: text
+        name: accent3
+        label: Accent3
+  - type: text
+    name: type
+    label: Reference Type Name
+    description: Name of the object model if it was referenced
+    hidden: true
+    default: palette

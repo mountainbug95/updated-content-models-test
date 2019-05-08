@@ -1,0 +1,14 @@
+<!-- Intro -->
+<section id="{{ include.section.section_id }}" class="wrapper {{ include.section.background_style }} fullscreen fade-up">
+    <div class="inner">
+        <h1>{{ include.section.title }}</h1>
+        {{ include.section.subtitle | markdownify }}
+        {% if include.section.actions %}
+            <ul class="actions">
+                {% for action in include.section.actions %}
+                    <li><a href="{% assign expr_1 = action.url | starts_with: '#' %}{% if expr_1 %}{{ action.url }}{% else %}{{ action.url | link | relative_url }}{% endif %}" class="button{% if action.is_scrolly %} scrolly{% endif %}{% if action.is_primary %} primary{% endif %}">{{ action.label }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</section>

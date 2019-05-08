@@ -1,0 +1,96 @@
+---
+label: Features Section
+hide_body: true
+is_partial: true
+display_field: title
+fields:
+  - type: text
+    name: type
+    label: Type
+    description: The type identifier of this object inside block lists
+    hidden: true
+    default: features
+    config:
+      required: true
+  - type: text
+    name: title
+    label: Section Title
+    description: >-
+      The bold text displayed at the top of the section (Also used by the CMS,
+      even if no title is displayed in the section)
+    default: Features Section
+    config:
+      required: true
+  - type: textarea
+    name: subtitle
+    label: Section Subtitle
+    description: The text displayed below the section title
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: text
+    name: section_id
+    label: Section ID
+    default: two
+    config:
+      required: true
+  - type: select
+    name: background_style
+    label: Background Style
+    description: The color scheme used for the section
+    default: style3
+    config:
+      required: true
+      source:
+        type: custom
+      options:
+        - style1
+        - style2
+        - style3
+        - style4
+  - type: field_group_list
+    name: features_list
+    label: Features
+    description: A list of features
+    config:
+      labelField: title
+    fields:
+      - type: text
+        name: title
+        label: Feature Title
+      - type: textarea
+        name: text
+        label: FeatureText
+        description: The text displayed below the feature title
+        config:
+          wysiwyg: true
+          schema:
+            format: markdown
+      - type: text
+        name: icon
+        label: Feature Icon
+        description: Font Awesome icon
+  - type: field_group_list
+    name: actions
+    label: Action Buttons
+    config:
+      labelField: label
+    fields:
+      - type: include
+        name: include_action
+        label: Action
+        template: action
+  - type: text
+    name: component
+    label: Section Component
+    hidden: true
+    default: features.html
+    config:
+      required: true
+  - type: text
+    name: type
+    label: Reference Type Name
+    description: Name of the object model if it was referenced
+    hidden: true
+    default: features

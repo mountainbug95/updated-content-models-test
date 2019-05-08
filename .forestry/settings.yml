@@ -10,20 +10,18 @@ sections:
     templates:
       - config
   - type: document
-    label: Header Configuration
-    path: _data/header.yml
-    templates:
-      - header
-  - type: document
-    label: Footer Configuration
-    path: _data/footer.yml
-    templates:
-      - footer
-  - type: document
     label: Home
     path: index.md
     templates:
       - home
+  - type: directory
+    path: ''
+    match: '**/*.md'
+    exclude: '{README.md,LICENSE.md,index.md,elements.md}'
+    label: pages
+    create: all
+    templates:
+      - page
   - type: document
     label: Elements
     path: elements.md

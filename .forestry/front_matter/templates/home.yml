@@ -6,14 +6,37 @@ fields:
   - type: text
     name: title
     label: Page Title
+    description: The title of the page
+    config:
+      required: true
+  - type: field_group
+    name: sidebar
+    label: Page Sidebar
+    fields:
+      - type: field_group_list
+        name: entries
+        label: Sidebar Entries
+        description: The links displayed in the page sidebar
+        config:
+          labelField: title
+        fields:
+          - type: text
+            name: title
+            label: Title
+            description: The title displayed in the page sidebar
+          - type: text
+            name: url
+            label: URL
+            description: 'the URL, or section ID of the sidebar entry'
   - type: blocks
     name: sections
     label: Sections
     description: Home sections
     template_types:
-      - icons
+      - intro
       - spotlights
-      - cta
+      - features
+      - contact
   - type: text
     name: layout
     label: Layout
@@ -21,5 +44,11 @@ fields:
     default: home
     config:
       required: true
+  - type: text
+    name: type
+    label: Reference Type Name
+    description: Name of the object model if it was referenced
+    hidden: true
+    default: home
 pages:
   - index.md

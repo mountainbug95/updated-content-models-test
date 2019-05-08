@@ -20,17 +20,53 @@ fields:
     description: 'The output path for your pages, posts, or collections.'
     hidden: true
     default: '/posts/:slug:output_ext'
+  - type: field_group
+    name: footer
+    label: Footer Configuration
+    fields:
+      - type: select
+        name: landing_style
+        label: Home Footer Style
+        description: The style of the home page footer
+        config:
+          required: true
+          source:
+            type: custom
+          options:
+            - alt
+            - style1-alt
+            - style2-alt
+            - style3-alt
+            - style4-alt
+      - type: select
+        name: alt_style
+        label: Default Footer Style
+        description: The style of the page footer
+        config:
+          required: true
+          source:
+            type: custom
+          options:
+            - alt
+            - style1-alt
+            - style2-alt
+            - style3-alt
+            - style4-alt
+      - type: text
+        name: copyright
+        label: Copyright Text
+        description: The text displayed in the copyright inside the page footer
   - type: select
     name: palette
     label: Color Palette
-    description: The color palette used in the theme
+    description: The color palette used for the page
     config:
       required: true
       source:
         type: custom
       options:
         - blue
-        - magenta
+        - green
         - purple
   - type: field_group
     name: palettes
@@ -46,8 +82,8 @@ fields:
             label: Palette
             template: palette
       - type: field_group
-        name: magenta
-        label: Magenta
+        name: green
+        label: Green
         fields:
           - type: include
             name: include_palette
@@ -100,3 +136,9 @@ fields:
     label: Exclude
     description: Exclude directories and/or files from the conversion.
     hidden: true
+  - type: text
+    name: type
+    label: Reference Type Name
+    description: Name of the object model if it was referenced
+    hidden: true
+    default: config
