@@ -10,135 +10,81 @@ fields:
     config:
       required: true
   - type: text
-    name: baseurl
+    name: baseURL
     label: Base URL
-    description: Serve the website from the given base URL
+    description: Hostname (and path) to the root
     hidden: true
-  - type: text
-    name: permalink
-    label: Permalink
-    description: 'The output path for your pages, posts, or collections.'
-    hidden: true
-    default: '/posts/:slug:output_ext'
   - type: field_group
-    name: footer
-    label: Footer Configuration
-    fields:
-      - type: select
-        name: landing_style
-        label: Home Footer Style
-        description: The style of the home page footer
-        config:
-          required: true
-          source:
-            type: custom
-          options:
-            - alt
-            - style1-alt
-            - style2-alt
-            - style3-alt
-            - style4-alt
-      - type: select
-        name: alt_style
-        label: Default Footer Style
-        description: The style of the page footer
-        config:
-          required: true
-          source:
-            type: custom
-          options:
-            - alt
-            - style1-alt
-            - style2-alt
-            - style3-alt
-            - style4-alt
-      - type: text
-        name: copyright
-        label: Copyright Text
-        description: The text displayed in the copyright inside the page footer
-  - type: select
-    name: palette
-    label: Color Palette
-    description: The color palette used for the page
+    name: params
+    label: Params
+    description: Site parameters
     config:
       required: true
+    fields:
+      - type: select
+        name: palette
+        label: Color Palette
+        description: The color palette used for the page
+        config:
+          required: true
+          source:
+            type: custom
+          options:
+            - blue
+            - green
+            - purple
+      - type: field_group
+        name: palettes
+        label: Palettes
+        hidden: true
+        fields:
+          - type: field_group
+            name: blue
+            label: Blue
+            fields:
+              - type: include
+                name: include_palette
+                label: Palette
+                template: palette
+          - type: field_group
+            name: green
+            label: Green
+            fields:
+              - type: include
+                name: include_palette
+                label: Palette
+                template: palette
+          - type: field_group
+            name: purple
+            label: Purple
+            fields:
+              - type: include
+                name: include_palette
+                label: Palette
+                template: palette
+  - type: list
+    name: disableKinds
+    label: Disable Kinds
+    description: Enable disabling of all pages of the specified Kinds.
+    hidden: true
+    config:
+      use_select: true
       source:
         type: custom
       options:
-        - blue
-        - green
-        - purple
-  - type: field_group
-    name: palettes
-    label: Palettes
+        - page
+        - home
+        - section
+        - taxonomy
+        - taxonomyTerm
+        - RSS
+        - sitemap
+        - robotsTXT
+        - '404'
+  - type: boolean
+    name: uglyURLs
+    label: Ugly URLs
+    description: >-
+      When enabled, creates URL of the form /filename.html instead of
+      /filename/.
     hidden: true
-    fields:
-      - type: field_group
-        name: blue
-        label: Blue
-        fields:
-          - type: include
-            name: include_palette
-            label: Palette
-            template: palette
-      - type: field_group
-        name: green
-        label: Green
-        fields:
-          - type: include
-            name: include_palette
-            label: Palette
-            template: palette
-      - type: field_group
-        name: purple
-        label: Purple
-        fields:
-          - type: include
-            name: include_palette
-            label: Palette
-            template: palette
-  - type: field_group
-    name: sass
-    label: Sass
-    hidden: true
-    fields:
-      - type: number
-        name: indentWidth
-        label: Indent Width
-        description: >-
-          Used to determine the number of spaces or tabs to be used for
-          indentation.
-        default: 4
-      - type: select
-        name: style
-        label: Output Style
-        description: Determines the output format of the final CSS style.
-        default: nested
-        config:
-          source:
-            type: custom
-          options:
-            - nested
-            - expanded
-            - compact
-            - compressed
-      - type: number
-        name: precision
-        label: Precision
-        description: Used to determine how many digits after the decimal will be allowed.
-        default: 10
-  - type: list
-    name: plugins
-    label: Plugins
-    hidden: true
-  - type: list
-    name: exclude
-    label: Exclude
-    description: Exclude directories and/or files from the conversion.
-    hidden: true
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: Name of the object model if it was referenced
-    hidden: true
-    default: config

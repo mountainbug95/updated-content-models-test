@@ -5,14 +5,6 @@ is_partial: true
 display_field: title
 fields:
   - type: text
-    name: type
-    label: Type
-    description: The type identifier of this object inside block lists
-    hidden: true
-    default: contact
-    config:
-      required: true
-  - type: text
     name: title
     label: Section Title
     description: >-
@@ -96,12 +88,14 @@ fields:
     name: component
     label: Section Component
     hidden: true
-    default: contact.html
     config:
       required: true
+    default: contact.html
   - type: text
     name: type
     label: Reference Type Name
     description: Name of the object model if it was referenced
     hidden: true
     default: contact
+    config:
+      required: true

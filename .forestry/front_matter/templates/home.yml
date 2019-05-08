@@ -44,11 +44,5 @@ fields:
     default: home
     config:
       required: true
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: Name of the object model if it was referenced
-    hidden: true
-    default: home
 pages:
-  - index.md
+  - _index.md

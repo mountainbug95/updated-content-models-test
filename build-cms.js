@@ -8,7 +8,7 @@ const yaml = require('js-yaml');
 const spaceId = process.env['CONTENTFUL_SPACE_ID'];
 const accessToken = process.env['CONTENTFUL_DEPLOY_TOKEN'];
 const outputDir = __dirname;
-const dataFilesDir = '_data';
+const dataFilesDir = 'data';
 
 if (!spaceId || !accessToken) {
     throw 'Need contentful-space-id and contentful-access-token arguments';
@@ -64,11 +64,10 @@ function convertDataByFilePath(data, filePath) {
 
 function getPageFilePath(page) {
     let url = page.stackbit_url_path;
-    if (url.match(/^posts/)) {
-        url = url.replace(/^posts\//, '_posts/');
-        let urlParts = url.split('/');
-        url = urlParts[0] + '/' + new Date(page.date).toISOString().substr(0, 10) + '-' + urlParts[1].replace(/[_]/, '-');
+    if (url.match(/^index.html$/)) {
+        url = url.replace(/^index.html$/, '_index.md')
     }
+    url = `content/${url}`;
     return url.replace(/.html$/, '.md');
 }
 

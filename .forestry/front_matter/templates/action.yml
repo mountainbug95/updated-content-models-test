@@ -21,9 +21,3 @@ fields:
     label: Is Primary
     description: Gives the button a primary color scheme
     default: false
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: Name of the object model if it was referenced
-    hidden: true
-    default: action
