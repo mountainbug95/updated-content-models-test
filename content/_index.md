@@ -11,7 +11,9 @@ sidebar:
     - title: Get in touch
       url: '#three'
 sections:
-  - title: Hyperspace
+  - type: intro
+    template: intro
+    title: Hyperspace
     subtitle: |-
       Cras aliquam amet adipiscing nibh faucibus suscipit ut Parturient  
       col accumsan est arcu donec sed Eleifend Integer.
@@ -23,15 +25,15 @@ sections:
         is_scrolly: true
         is_primary: false
     component: intro.html
-    type: intro
-    template: intro
-  - title: Spotlights Section
+  - type: spotlights
+    template: spotlights
+    title: Spotlights Section
     section_id: one
     background_style: style2
     component: spotlights.html
-    type: spotlights
-    template: spotlights
-  - title: What we do
+  - type: features
+    template: features
+    title: What we do
     subtitle: >-
       Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis
       mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget
@@ -76,9 +78,9 @@ sections:
         is_scrolly: false
         is_primary: false
     component: features.html
-    type: features
-    template: features
-  - title: Get in touch
+  - type: contact
+    template: contact
+    title: Get in touch
     text: >-
       Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis
       mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget
@@ -116,11 +118,5 @@ sections:
           icon: fa-linkedin
           url: '#'
     component: contact.html
-    type: contact
-    template: contact
 layout: home
-menu:
-  main:
-    weight: 1
-    name: Home
 ---
