@@ -1,17 +1,15 @@
 ---
-title: Just a Generic Page
-subtitle: Just a generic subtitle for the page
-menus:
-  main:
-    title: Generic
-    weight: 2
-template: page
+title: Magna etiam sed lorem ipsum dolor amet
+subtitle: A cautionary tale about Magna etiam
+excerpt: Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra. Sed quat a diam, aliquet tempus felis. Phasellus et magna vitae nibh porttitor tempus vitae.
+date: 2016-09-04
+thumb_img_path: images/art.svg
+template: post
 ---
 <section class="content">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.</p>
   <img src="../images/art.svg" class="block-image"/>
   <p>Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.</p>
-  <h2>This is a H2. Great for dividing content sections.</h2>
   <p>Sed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque.<img src="../images/art.svg" class="inline-image"/> Sed maximus massa at nisl lobortis efficitur vel nec risus. Aenean tincidunt et lectus vel dapibus. Fusce pellentesque id felis id faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet nibh non elit vulputate placerat. Sed vitae lacinia ligula. Sed suscipit eu nulla sit amet feugiat. Nullam ut ultricies nulla, at convallis massa. Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.</p>
   <h3>This is a H3. Use it for subheads and subsections. </h3>
   <p>Donec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget <a href="/" class="text-link">this is an inline link</a> placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.</p>

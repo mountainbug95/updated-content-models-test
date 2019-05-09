@@ -1,2 +1,5 @@
-enable_contact_section: true
-line_phrase: Lorem ipsum dolor sit amet nullam.
+content: "&copy; Stackbit-Vanilla. All rights reserved."
+links:
+  - text: Made with Stackbit
+    url: https://www.stackbit.com
+    new_window: true

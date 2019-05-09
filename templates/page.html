@@ -1,19 +1,16 @@
 {% extends "body.html" %}
 
 {% block content %}
-
-<!-- Main -->
-<section id="main" class="wrapper style1">
-    <div class="inner">
-        <header class="major">
-            <h1>{{ page.title }}</h1>
-            {{ page.subtitle | markdownify }}
+    <!-- Main -->
+    <section class="page">
+        <header class="hero">
+            <div class="copy">
+                <h1>{{ page.title }}</h1>
+                {% if page.subtitle %}
+                <h3>{{ page.subtitle | safe }}</h3>
+                {% endif %}
+            </div>
         </header>
-        {% if page.img_path %}
-            <span class="image main"><img src="{{ page.img_path | relative_url }}" alt="" /></span>
-        {% endif %}
         {{ page.content }}
-    </div>
-</section>
-
+    </section>
 {% endblock %}

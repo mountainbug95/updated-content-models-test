@@ -1,7 +1,11 @@
 baseurl: "/"
-title: "Reflex"
+title: "Stackbit Vanilla Theme"
 main_js: "assets/js/main.js"
 params:
   none: ""
-#templates:
-#  body_class: "is-preload"
+sass:
+  input_file: sass/main.scss
+  output_file: assets/css/main.css
+  indentWidth: 4
+  outputStyle: nested
+  precision: 10

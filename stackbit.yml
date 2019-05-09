@@ -1,8 +1,32 @@
 uploadDir: "images"
+collections:
+  - label: Home
+    source: pages   # source "pages" means need to look in ssgConfig.pagesDir
+    create: true
+    models: ["home"]  # models that could be used to create the page, I guess, that even if type is a "file" it can be still created using one of supported models
+  - label: Pages    # Pages collection shows all files from <pagesDir> having "page" or "generic" layout field
+    source: pages
+    create: true
+    models: ["page", "generic"]
+  - label: Posts    # Posts collection shows all files from <pagesDir>/posts
+    source: pages
+    create: true
+    models: ["post"]
+sourceMapping:
+  - source:
+      fieldPath: "author.name"
+    target:
+      file: "data/header.yml"
+      fieldPath: "content"
+  - source:
+      fieldPath: "author.avatar"
+    target:
+      file: "content/index.md"
+      fieldPath: "sections[0].image"
 models:
   config:
     type: config
-    label: Config
+    label: Global Site Config
     hideContent: true
     singleInstance: true
     fields:
@@ -10,91 +34,103 @@ models:
         name: none
         label: None
         hidden: true
-        description: Just an empty param, allows the site params to be displayed properl
-  menu:
+        description: An empty var, used so the site params section will function
+  header:
     type: data
-    file: menu.yml
-    label: Menu Configuration
+    file: header.yml
+    label: Header Configuration
     fields:
-      - type: list
-        name: actions
-        label: Menu Action Buttons
-        description: The action buttons displayed at the bottom of the menu
-        items:
-          type: action
-  social:
-    type: data
-    file: social.yml
-    label: Social Configuration
-    fields:
-      - type: boolean
-        name: enabled
-        label: Enabled
-        default: false
-        description: Displays the social section in the page footer
-      - type: string
-        name: title
-        label: Section Title
-        description: The bold text displayed at the top of the section
       - type: markdown
-        name: social_content
-        label: Section Text
-        description: The text displayed below the section title
-      - type: list
-        name: social_links
-        label: Social Media
-        description: A list of social media icons displayed along the bottom of the section
-        items:
-          type: object
-          labelField: title
-          fields:
-            - type: string
-              name: title
-              label: Icon Title
-              required: true
-            - type: string
-              name: icon
-              label: Icon
-              required: true
-              description: Font Awesome icon
-            - type: string
-              name: link_url
-              label: URL
-              widget: url
+        name: content
+        label: Header Content
+      - type: boolean
+        name: has_nav
+        label: Navigation Menu
+        description: Display the navigation bar in the header
+        default: true
   footer:
     type: data
     file: footer.yml
     label: Footer Configuration
     fields:
-      - type: boolean
-        name: enable_contact_section
-        label: Enable Contact Section
-        default: false
-        description: Displays the contact section in the page footer
+      - type: markdown
+        name: content
+        label: Footer Content
+      - type: list
+        name: links
+        label: Links
+        description: A list of links to display in the footer of the site
+        items:
+          type: object
+          labelField: text
+          fields:
+            - type: string
+              name: text
+              label: Link text
+            - type: string
+              name: url
+              label: URL
+              widget: url
+            - type: boolean
+              name: new_window
+              label: Open in new window
+              default: true
+  social:
+    type: data
+    file: social.json
+    label: Social Links
+    fields:
+      - type: list
+        name: links
+        label: Social Links
+        description: A list of social links displayed on the left side.
+        items:
+          type: object
+          labelField: type
+          fields:
+            - type: string
+              name: type
+              label: Type
+              required: true
+            - type: string
+              name: url
+              label: URL
+              widget: url
+  author:
+    type: data
+    file: author.json
+    label: Author
+    fields:
       - type: string
-        name: line_phrase
-        label: Copyright Phrase
-        description: The text displayed beside the page copyright
+        name: name
+        label: Name
+      - type: string
+        name: email
+        label: Email
+      - type: image
+        name: avatar
+        label: Avatar
   home:
     type: page
     label: Home
     hideContent: true
-    singleInstance: true
     template: home
+    singleInstance: true
     file: index.md
     fields:
       - type: string
         name: title
-        label: Page Title
+        label: Title
+        description: The title of the page
         required: true
       - type: list
         name: sections
         label: Sections
-        description: Home Sections
+        description: Home sections
         items:
           type: reference
           labelField: title
-          models: [intro, features, spotlight, mission]
+          models: [postlist, contentblock, textimageblock, heroblock]
   page:
     type: page
     label: Page
@@ -103,148 +139,44 @@ models:
     fields:
       - type: string
         name: title
-        label: Page Title
+        label: Title
+        description: The title of the page
         required: true
-      - type: markdown
+      - type: string
         name: subtitle
-        label: Page Subtitle
-        description: The text displayed below the page title
-      - type: image
-        name: img_path
-        label: Content Image
-        description: The image displayed in the page content
+        label: Subtitle
+        description: Text that is shown just above the title
   post:
     type: page
     label: Post
-    template: page
     folder: posts
+    template: post
     fields:
       - type: string
         name: title
-        label: Page Title
+        label: Title
+        description: The title of the page
         required: true
-      - type: markdown
-        name: subtitle
-        label: Page Subtitle
-        description: The text displayed below the page title
-      - type: markdown
-        name: excerpt
-        label: Post Excerpt
-        description: The excerpt displayed in the spotlights section of the home page
-      - type: image
-        name: img_path
-        label: Content Image
-        description: The image displayed in the page content
       - type: string
-        name: post_button_label
-        label: Spotlights Button label
-        description: The text displayed in the home spotligh button
+        name: subtitle
+        label: Subtitle
+        description: Text that is shown just above the title
+      - type: image
+        name: content_img_path
+        label: Image
+        description: The image shown on top of the page
+      - type: string
+        name: excerpt
+        label: Home Excerpt
+        description: Excerpt to be displayed in any thumbnails for the post
       - type: date
         name: date
-        label: Post Date
+        label: Date
         required: true
-  elements:
-    type: page
-    label: Elements
-    hideContent: true
-    singleInstance: true
-    template: elements
-    file: elements.md
-    fields:
-      - type: string
-        name: title
-        label: Page Title
-        required: true
-  section:
-    type: object
-    label: Section
-    hideContent: true
-    labelField: title
-    fields:
-      - type: string
-        name: title
-        label: Section Title
-        required: true
-        description: The bold text displayed at the top of the section
-      - type: markdown
-        name: content
-        label: Section Content
-        description: The text displayed as section content
-      - type: list
-        name: actions
-        label: Section Action Buttons
-        items:
-          type: action
-      - type: string
-        name: component
-        label: Section Component
-        required: true
-        hidden: true
-  intro:
-    type: object
-    label: Intro Section
-    extends: [section]
-    fields:
-      - name: title
-        default: Reflex
       - type: image
-        name: img_path
-        label: Image
-        description: The image displayed on the left side of the section
-      - name: component
-        const: intro.html
-  features:
-    type: object
-    label: Features Section
-    extends: [section]
-    fields:
-      - name: title
-        default: Ipsum malesuada
-      - type: markdown
-        name: subtitle
-        label: Section Subtitle
-        description: The text displayed below the section title
-      - type: list
-        name: symbol_display
-        label: Icon Circles
-        description: The icons displayed below the section subtitle
-        items:
-          type: object
-          labelField: title
-          fields:
-            - type: string
-              name: title
-              label: Icon Title
-              required: true
-            - type: string
-              name: icon
-              label: Icon
-              required: true
-              description: Font Awesome icon
-      - name: component
-        const: features.html
-  spotlight:
-    type: object
-    label: Spotlight Section
-    extends: [section]
-    fields:
-      - name: title
-        default: Duis torquent
-      - type: markdown
-        name: subtitle
-        label: Section Subtitle
-        description: The text displayed below the section title
-      - name: component
-        const: spotlight.html
-  mission:
-    type: object
-    label: Mission Section
-    extends: [section]
-    fields:
-      - name: title
-        default: Amet ullamcorper
-      - name: component
-        const: mission.html
+        name: thumb_img_path
+        label: Alternate Image
+        description: image to be displayed in any thumbnails for the post
   action:
     type: object
     label: Action
@@ -252,20 +184,77 @@ models:
     fields:
       - type: string
         name: label
-        label: Button Label
-        required: true
-        description: The text displayed inside the button
+        label: Label
       - type: string
         name: url
-        label: Button URL
+        label: URL
         widget: url
-      - type: boolean
-        name: is_scrolly
-        label: Is Scrolly
-        default: false
-        description: Gives the button a scroll animation (if the button URL is a section ID)
-      - type: boolean
-        name: is_primary
-        label: Is Primary
-        default: false
-        description: Gives the button a primary color scheme
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Section Title
+        description: The section title (Used by the CMS, even if it is not displayed in the section)
+      - type: string
+        name: section_id
+        label: Element ID
+      - type: string
+        name: component
+        label: Component
+        required: true
+        hidden: true
+  postlist:
+    type: object
+    label: Post List
+    extends: [section]
+    fields:
+      - type: number
+        name: num_posts_displayed
+        label: Number of displayed posts
+        required: true
+      - name: component
+        const: postlist.html
+  contentblock:
+    type: object
+    label: Content Section
+    extends: [section]
+    fields:
+      - name: component
+        const: content_block.html
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section
+  textimageblock:
+    type: object
+    label: Content Section With Image
+    extends: [section]
+    fields:
+      - name: component
+        const: text_image_block.html
+      - type: markdown
+        name: text
+        label: Text
+        description: The text content of the section
+      - type: image
+        name: image
+        label: Image
+        description: The image to display with the text
+  heroblock:
+    type: object
+    label: Hero Header With Image
+    extends: [section]
+    fields:
+      - name: component
+        const: hero_block.html
+      - type: markdown
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the header section
+      - type: image
+        name: image
+        label: Image
+        description: The image to display with the text

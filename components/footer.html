@@ -1,14 +1,9 @@
 <!-- Footer -->
-<section id="footer" class="wrapper split style2">
-    <div class="inner">
-        {% if site.data.social.enabled %}
-            {% include "social.html" %}
-        {% endif %}
-        {% if site.data.footer.enable_contact_section %}
-            {% include "contact.html" %}
-        {% endif %}
-    </div>
-    <div class="copyright">
-        <p>&copy; {{ site.title }}. All rights reserved. {{ site.data.footer.line_phrase }}</p>
-    </div>
-</section>
+<footer class="footer container">
+    <div class="copyright">{{ site.data.footer.content | markdownify }}</div>
+    <nav>
+        {%  for link_item in site.data.footer.links %}
+            <a class="subtle-link" href="{{ link_item.url }}" {% if link_item.new_window %}target="_blank"{% endif %}>{{ link_item.text }}</a>
+        {% endfor %}
+    </nav>
+</footer>

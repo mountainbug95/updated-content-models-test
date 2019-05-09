@@ -1,10 +1,11 @@
 enabled: true
 status: enabled
-title: Reflex
-description: a multipage theme with posts
-weight: 7
-author: Pixelarity
-authorURL: https://pixelarity.com
+title: Vanilla
+description: Stackbit Vanilla theme
+supportedData: [medium]
+weight: 5
+author: Stackbit
+authorURL: https://www.stackbit.com
 images:
   small: images/demo-256x192.png
   large: images/demo-1024x768.png
