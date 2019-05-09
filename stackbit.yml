@@ -16,8 +16,18 @@ sourceMapping:
   - source:
       fieldPath: "author.name"
     target:
+      file: "data/author.json"
+      fieldPath: "name"
+  - source:
+      fieldPath: "author.name"
+    target:
       file: "data/header.yml"
       fieldPath: "content"
+  - source:
+      fieldPath: "author.avatar"
+    target:
+      file: "data/author.json"
+      fieldPath: "avatar"
   - source:
       fieldPath: "author.avatar"
     target:
