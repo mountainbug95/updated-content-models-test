@@ -1,11 +1,10 @@
 ---
-title: Ipsum
-home_style: style2
-home_img: images/pic07.jpg
-excerpt: Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.
-date: 2017-04-06
-img_src: images/pic13.jpg
+title: Aliquam veroeros
+excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos magna fames ac turpis egestas amet non lorem amet.
+img_path: images/pic02.jpg
+post_button_label: Details
 template: page
+date: 2017-04-03
 ---
 
 Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.

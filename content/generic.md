@@ -1,6 +1,7 @@
 ---
 title: Ipsum Veroeros
-img_src: images/pic13.jpg
+subtitle: Lorem ipsum dolor sit magna consectetur
+img_path: images/pic05.jpg
 template: page
 menus:
   main:

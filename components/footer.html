@@ -1,14 +1,14 @@
 <!-- Footer -->
-<footer id="footer">
+<section id="footer" class="wrapper split style2">
     <div class="inner">
-        {% if site.data.contact.enabled %}
-            {% include "contact.html" %}
-        {% endif %}
         {% if site.data.social.enabled %}
             {% include "social.html" %}
         {% endif %}
-        <ul class="copyright">
-            <li>&copy; {{ site.title }}. All rights reserved</li>
-        </ul>
+        {% if site.data.footer.enable_contact_section %}
+            {% include "contact.html" %}
+        {% endif %}
     </div>
-</footer>
+    <div class="copyright">
+        <p>&copy; {{ site.title }}. All rights reserved. {{ site.data.footer.line_phrase }}</p>
+    </div>
+</section>

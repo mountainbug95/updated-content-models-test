@@ -1,11 +1,10 @@
 enabled: true
 status: enabled
-title: Phantom
+title: Reflex
 description: a multipage theme with posts
-weight: 6
+weight: 7
 author: Pixelarity
 authorURL: https://pixelarity.com
 images:
   small: images/demo-256x192.png
   large: images/demo-1024x768.png
-

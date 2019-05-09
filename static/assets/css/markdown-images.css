@@ -1,5 +1,8 @@
-.inner header img,
-#main .inner img,
-.wrapper .main .inner .tiles article a .content img{
-    max-width: 100% !important;
+.wrapper .inner img,
+.wrapper .inner header img,
+.wrapper .inner section img,
+.wrapper .inner .spotlight .content img,
+.wrapper .inner .content header img,
+.wrapper .inner .major img{
+    max-width: 100%;
 }

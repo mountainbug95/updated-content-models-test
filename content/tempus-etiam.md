@@ -1,6 +1,6 @@
 ---
 title: Tempus Etiam
-img_src: images/pic13.jpg
+img_path: images/pic05.jpg
 template: page
 menus:
   main:

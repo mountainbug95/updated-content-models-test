@@ -1,67 +1,51 @@
 ///
-/// Phantom by Pixelarity
+/// Reflex by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
 /* Menu */
 
-	#wrapper {
-		@include vendor('transition', 'opacity #{_duration(menu)} ease');
-		opacity: 1;
-	}
-
 	#menu {
-		@include vendor('transform', 'translateX(#{_size(menu)})');
-		@include vendor('transition', ('transform #{_duration(menu)} ease', 'visibility #{_duration(menu)}'));
-		position: fixed;
-		top: 0;
-		right: 0;
-		width: _size(menu);
-		max-width: 80%;
+		@include color(invert);
+		@include vendor('display', 'flex');
+		@include vendor('flex-direction', 'column');
+		@include vendor('align-items', 'center');
+		@include vendor('justify-content', 'center');
+		@include vendor('pointer-events', 'none');
+		@include vendor('transition', (
+			'opacity #{_duration(menu) * 0.5} ease',
+			'visibility #{_duration(menu) * 0.5}'
+		));
+		background-color: _palette(invert, fg);
 		height: 100%;
-		-webkit-overflow-scrolling: touch;
-		background: _palette(fg);
-		color: _palette(bg);
-		cursor: default;
+		opacity: 0;
+		overflow: hidden;
+		position: fixed;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 100%;
+		z-index: _misc(z-index-base);
 		visibility: hidden;
-		z-index: _misc(z-index-base) + 2;
 
-		> .inner {
-			@include vendor('transition', 'opacity #{_duration(menu)} ease');
-			-webkit-overflow-scrolling: touch;
+		&:before {
+			@include vendor('transition', (
+				'width #{_duration(menu)} linear',
+				'height #{_duration(menu)} linear',
+				'top #{_duration(menu)} linear',
+				'right #{_duration(menu)} linear'
+			));
 			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			padding: 2.75em;
-			opacity: 0;
-			overflow-y: auto;
-
-			> ul {
-				list-style: none;
-				margin: 0 0 (_size(element-margin) * 0.5) 0;
-				padding: 0;
-
-				> li {
-					padding: 0;
-					border-top: solid 1px transparentize(_palette(bg), 0.85);
-
-					a {
-						display: block;
-						padding: 1em 0;
-						line-height: 1.5;
-						border: 0;
-						color: inherit;
-					}
-
-					&:first-child {
-						border-top: 0;
-						margin-top: -1em;
-					}
-				}
-			}
+			content: '';
+			display: block;
+			top: 2em;
+			right: 2em;
+			width: 3.75em;
+			height: 3.75em;
+			background-color: _palette(invert, bg);
+			border-radius: 100%;
+			z-index: -1;
 		}
 
 		> .close {
@@ -69,24 +53,21 @@
 				'opacity #{_duration(menu)} ease',
 				'transform #{_duration(menu)} ease'
 			));
-			@include vendor('transform', 'scale(0.25) rotate(180deg)');
+			@include vendor('transform', 'scale(0.25) rotate(-180deg)');
 			-webkit-tap-highlight-color: transparent;
 			display: block;
 			position: absolute;
 			top: 2em;
-			left: -6em;
-			width: 6em;
-			text-indent: 6em;
-			height: 3em;
+			right: 2em;
+			width: 3.75em;
+			text-indent: 3.75em;
+			height: 3.75em;
 			border: 0;
-			font-size: 1em;
-			opacity: 0;
 			overflow: hidden;
 			padding: 0;
 			white-space: nowrap;
 
-			&:before, &:after {
-				@include vendor('transition', 'opacity #{_duration(transition)} ease');
+			&:before {
 				content: '';
 				display: block;
 				position: absolute;
@@ -96,68 +77,94 @@
 				height: 100%;
 				background-position: center;
 				background-repeat: no-repeat;
-				background-size: 2em 2em;
+				background-size: 2em;
+				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><style>line { stroke-width: 8px; stroke: #{_palette(invert, fg)}; }</style><line x1="15" y1="15" x2="85" y2="85" /><line x1="85" y1="15" x2="15" y2="85" /></svg>');
 			}
 
-			&:before {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><style>line { stroke-width: 8px; stroke: #{_palette(accent1)}; }</style><line x1="15" y1="15" x2="85" y2="85" /><line x1="85" y1="15" x2="15" y2="85" /></svg>');
-				opacity: 0;
-			}
+			@include breakpoint('<=small') {
+				top: 1em;
+				right: 1em;
+				width: 3em;
+				text-indent: 3em;
+				height: 3em;
 
-			&:after {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><style>line { stroke-width: 8px; stroke: #{_palette(fg)}; }</style><line x1="15" y1="15" x2="85" y2="85" /><line x1="85" y1="15" x2="15" y2="85" /></svg>');
-				opacity: 1;
-			}
-
-			&:hover {
 				&:before {
-					opacity: 1;
-				}
-
-				&:after {
-					opacity: 0;
+					background-size: 1.75em;
 				}
 			}
 		}
 
-		@include breakpoint('<=small') {
-			@include vendor('transform', 'translateX(#{_size(menu) * 0.75})');
-			width: (_size(menu) * 0.75);
+		> .inner {
+			@include vendor('transition', 'opacity #{_duration(menu)} ease-in-out');
+			@include vendor('transition-delay', '#{_duration(menu) * 0.5}');
+			@include padding(3em, 3em);
+			width: 24em;
+			max-width: 100%;
+			opacity: 0;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
 
-			> .inner {
-				padding: 2.75em 1.5em;
+			@include breakpoint('<=small') {
+				@include padding(3em, 2em);
+			}
+
+			@include breakpoint('<=xsmall') {
+				@include padding(3em, 1.5em);
+				width: 30em;
+			}
+
+			@include breakpoint('<=xxsmall') {
+				@include padding(3em, 1em);
+			}
+		}
+
+		h2 {
+			font-size: 1.75em;
+		}
+
+		ul {
+			&.links {
+				list-style: none;
+				padding: 0;
+
+				li {
+					padding: 0;
+					border-top: solid 1px transparentize(_palette(invert, fg), 0.9);
+
+					a {
+						text-decoration: none;
+						height: 3.5em;
+						line-height: 3.5em;
+						display: block;
+						border: 0;
+					}
+
+					&:first-child {
+						border-top: 0;
+					}
+				}
+			}
+		}
+
+		&.visible {
+			@include vendor('pointer-events', 'auto');
+			opacity: 1;
+			visibility: visible;
+
+			&:before {
+				width: 400vw;
+				width: 300vmax;
+				height: 400vw;
+				height: 300vmax;
+				top: -150vw;
+				right: -150vw;
 			}
 
 			> .close {
-				top: 0.5em;
-				left: -4.25em;
-				width: 4.25em;
-				text-indent: 4.25em;
-
-				&:before, &:after {
-					background-size: 1.5em 1.5em;
-				}
-			}
-		}
-	}
-
-	body.is-menu-visible {
-		#wrapper {
-			@include vendor('pointer-events', 'none');
-			cursor: default;
-			opacity: 0.25;
-		}
-
-		#menu {
-			@include vendor('transform', 'translateX(0)');
-			visibility: visible;
-
-			> * {
-				opacity: 1;
+				@include vendor('transform', 'scale(1) rotate(0deg)');
 			}
 
-			.close {
-				@include vendor('transform', 'scale(1.0) rotate(0deg)');
+			> .inner {
 				opacity: 1;
 			}
 		}

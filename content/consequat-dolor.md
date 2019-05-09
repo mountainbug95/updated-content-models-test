@@ -1,7 +1,7 @@
 ---
 title: Consequat Dolor
-img_src: images/pic13.jpg
 template: page
+img_path: images/pic05.jpg
 menus:
   main:
     weight: 4

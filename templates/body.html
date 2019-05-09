@@ -2,17 +2,14 @@
 
 {% block body %}
 
-    <!-- Wrapper -->
-    <div id="wrapper">
-        {% include "header.html" %}
-        {% include "menu.html" %}
-        <!-- Main -->
-        <div id="main">
-            <div class="inner">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
-        {% include "footer.html" %}
-    </div>
+{% include "header.html" %}
+{% include "menu.html" %}
+
+<!-- Wrapper -->
+<div id="wrapper">
+    {% block content %}{% endblock %}
+    
+    {% include "footer.html" %}
+</div>
 
 {% endblock %}

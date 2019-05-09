@@ -5,10 +5,10 @@
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
 @import 'font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300italic,500,500italic');
 
 /*
-	Phantom by Pixelarity
+	Reflex by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -24,6 +24,18 @@
 		xxsmall:  ( null,    360px  )
 	));
 
+// Mixins.
+
+	@mixin color($p) {
+		@include color-typography($p);
+		@include color-button($p);
+		@include color-form($p);
+		@include color-list($p);
+		@include color-icons($p);
+		@include color-table($p);
+		@include color-spotlight($p);
+	}
+
 // Base.
 
 	@import 'base/reset';
@@ -33,22 +45,22 @@
 // Component.
 
 	@import 'components/row';
-	@import 'components/section';
+	@import 'components/box';
+	@import 'components/button';
+	@import 'components/form';
 	@import 'components/icon';
+	@import 'components/image';
 	@import 'components/list';
 	@import 'components/actions';
 	@import 'components/icons';
-	@import 'components/form';
-	@import 'components/box';
-	@import 'components/image';
+	@import 'components/section';
 	@import 'components/table';
-	@import 'components/button';
-	@import 'components/tiles';
+	@import 'components/spotlight';
+	@import 'components/wrapper';
 
 // Layout.
 
 	@import 'layout/header';
 	@import 'layout/menu';
-	@import 'layout/main';
 	@import 'layout/footer';
-	@import 'layout/wrapper';
+	@import 'layout/intro';

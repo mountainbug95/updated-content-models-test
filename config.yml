@@ -1,5 +1,5 @@
 baseurl: "/"
-title: "Phantom"
+title: "Reflex"
 main_js: "assets/js/main.js"
 params:
   none: ""
